@@ -1,9 +1,9 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 const Auth = () => {
-  const { signUp, user, logOut, logIn } = React.useContext(AuthContext);
+  const { signUp, logIn } = useAuth();
   const {
     register,
     handleSubmit,
@@ -30,8 +30,6 @@ const Auth = () => {
     <div className="page">
       <div className="container">
         <div className="auth-container">
-          {user && <p>user logged in {user.email}</p>}
-          <button onClick={() => logOut()}>Logout</button>
           <h1 className="page-title">
             {mode === "signup" ? "Sign Up" : "Log In"}
           </h1>
